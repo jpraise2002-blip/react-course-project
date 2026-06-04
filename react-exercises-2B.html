@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React Exercises 2B</title>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/dayjs.js">
+  </script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+    function ProductDetails({ imageSrc, name, price, product, discountPrice }) {
+      /*return (
+        <>
+          <p>{ name }</p>
+          {discountPrice && (
+            <>
+              <p><del>{ price }</del></p>
+              <p>{ discountPrice }</p>
+            </>
+          )}
+          {!discountPrice && (
+            <>
+              <p>{ price }</p>
+            </>
+          )}
+          <button>Add to Cart</button>
+        </>
+        
+      );*/
+
+      return (
+        <>
+          <p><img src={imageSrc} width="100" /></p>
+          <p>{ name }</p>
+          {discountPrice ? (
+            <>
+              <p><del>{ price }</del></p>
+              <p>{ discountPrice }</p>
+            </>
+          ) : (
+            <>
+              <p>{ price }</p>
+            </>
+          )}
+          <button>Add to Cart</button>
+        </>
+        
+      );
+    }
+    function App() {
+      return (
+        <>
+          <ProductDetails 
+            imageSrc="cotton-socks.png"
+            name="Cotton socks" 
+            price="Price: $10.90"
+            product="socks" 
+            discountPrice = "Discount Price: $5.45"
+          />
+          <ProductDetails
+            imageSrc="tennis-balls.png" 
+            name="Tennis balls" 
+            price="Price: $6.00" 
+            product="ball" 
+          />
+          <ProductDetails
+            imageSrc="plain-t-shirt.png" 
+            name="Plain T-Shirt" 
+            price="Price: $7.99" 
+            product="socks" 
+          />
+        </>
+      )
+    }
+    
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+
+  </script>
+</body>
+
+</html>
