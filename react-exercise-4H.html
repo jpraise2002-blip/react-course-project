@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Exercise 3A</title>
+  <style>
+    body {
+      margin-top:0;
+      margin-bottom: 0;
+    }
+    .button-container {
+      display: flex;
+      justify-content:center;
+      background-color: rgb(222, 222, 222);
+      height: 100vh;
+      align-items: center;
+    }
+    button {
+      background-color: rgb(25, 135, 84);
+      color: white;
+      border: none;
+      border-radius: 2px;
+      padding: 10px 15px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/dayjs.js">
+  </script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function App() {
+
+      const [count, setCount] = React.useState(0);
+      const [isRunning, setIsRunning] = React.useState(false);
+      const buttonRef = React.useRef(null);
+      const intervalRef = React.useRef(null);
+      
+
+      function increaseCount() {
+        setCount(count + 1)
+        console.log(`clicked ${count + 1} times`)
+      }
+
+      function resetCount() {
+        setCount(0)
+      }
+
+      // function autoClick() {
+      //   setInterval(() => {
+      //     const buttonElem = buttonRef.current;
+      //     if (buttonElem) {
+      //       buttonElem.click()
+      //     } 
+      //   }, 1000)
+      // }
+
+      function autoClick() {
+        if(isRunning) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+          setIsRunning(false);
+        } else {
+          intervalRef.current = setInterval(() => {
+          const buttonElem = buttonRef.current;
+          if (buttonElem) {
+            buttonElem.click()
+          } 
+        }, 1000);
+        setIsRunning(true);
+        }
+      }
+      
+
+      return (
+        <div className='button-container'>
+          <button onClick={increaseCount}
+          ref={buttonRef}>
+            Clicked {count} {count === 1 ? 'time' : 'times'}
+          </button>
+          <button onClick={resetCount}>Reset</button>
+          <button onClick={autoClick}>{!isRunning ? 'Start Auto Click' : 'Stop Auto Click'}</button>
+        </div>
+      )
+    }
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+
+
+
+
+  </script>
+</body>
+
+</html>
