@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Chatbot } from 'supersimpledev';
+import  dayjs  from 'dayjs';
 import LoadingSpinnerImage from '../assets/loading-spinner.gif'
 import './ChatInput.css';
 
@@ -23,7 +24,8 @@ export function ChatInput({ chatMessages, setChatMessages }) {
           {
             message:inputText,
             sender:'user',
-            id: crypto.randomUUID()
+            id: crypto.randomUUID(),
+            time: dayjs().valueOf()
           }
         ]
 
@@ -46,11 +48,18 @@ export function ChatInput({ chatMessages, setChatMessages }) {
           {
             message:response,
             sender:'robot',
-            id: crypto.randomUUID()
+            id: crypto.randomUUID(),
+            time: dayjs().valueOf()
           }
         ]);
 
         setIsLoading(false);
+      }
+
+      function clearMessage() {
+            setChatMessages([]);
+
+            // localStorage.setItem('messages', JSON.stringify([]));
       }
 
       function handleKeyDown() {
@@ -76,6 +85,10 @@ export function ChatInput({ chatMessages, setChatMessages }) {
             onClick={sendMessage}
             className="send-button"
             >Send
+          </button>
+          <button onClick={clearMessage}
+          className='clear-button'>
+            Clear
           </button>
         </div>
       );
