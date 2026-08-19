@@ -9,7 +9,7 @@ function App() {
   return (
     <Routes>
       <Route index element={<HomePage />} /> 
-      {/*Instead of path="/" we can use the prop index instead*/}
+      {/*Instead of path="/" we can use the prop index*/}
       <Route path='checkout' element={<CheckOutPage />} />
       <Route path='orders' element={<OrdersPage />} />
       <Route path='tracking' element={<TrackingPage />} />
