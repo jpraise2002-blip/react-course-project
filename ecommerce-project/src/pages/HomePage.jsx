@@ -4,6 +4,13 @@ import CheckMark from '../assets/images/icons/checkmark.png';
 import './HomePage.css';
 
 export function HomePage() {
+    fetch('http://localhost:3000/api/products')
+        .then((response) => {
+           return response.json();
+        }).then((data) => {
+            console.log(data);
+        });
+
     return (
         <>
             <title>Ecommerce Project</title>
@@ -29,7 +36,7 @@ export function HomePage() {
                                     <img className="product-rating-stars"
                                         src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
                                     <div className="product-rating-count link-primary">
-                                        {product.rating .count}
+                                        {product.rating.count}
                                     </div>
                                 </div>
 
@@ -65,7 +72,7 @@ export function HomePage() {
                             </div>
                         )
                     })}
-                    
+
                 </div>
             </div>
         </>
