@@ -6,7 +6,7 @@ import { formatMoney } from '../../utils/money';
 import './CheckoutPage.css';
 
 export function CheckOutPage({ cart }) {
-    const [deliveryOptions, setDeliveryOptions] = useState();
+    const [deliveryOptions, setDeliveryOptions] = useState([]);
 
     useEffect(() => {
         axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
