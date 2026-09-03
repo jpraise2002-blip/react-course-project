@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { HomePage } from './pages/HomePage';
+import { HomePage } from './pages/home/HomePage';
 import { CheckOutPage } from './pages/checkout/CheckoutPages';
-import { OrdersPage } from './pages/OrdersPage';
+import { OrdersPage } from './pages/orders/OrdersPage';
 import './App.css'
 import { TrackingPage } from './pages/TrackingPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -24,8 +24,8 @@ function App() {
       {/*Instead of path="/" we can use the prop index*/}
       <Route path='checkout' element={<CheckOutPage cart={cart} />} />
       <Route path='orders' element={<OrdersPage cart={cart} />} />
-      <Route path='tracking' element={<TrackingPage />} />
-      <Route path='*' element={<NotFoundPage />} />
+      <Route path='tracking' element={<TrackingPage cart={cart} />} />
+      <Route path='*' element={<NotFoundPage cart={cart} />} />
     </Routes>
   )
 }

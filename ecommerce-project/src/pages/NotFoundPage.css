@@ -1,4 +1,12 @@
 .not-found-page  {
-    margin: 300px;
-    font-size: 70px;
+    margin-top: 200px;
+    
+}
+.error-head {
+    text-align: center;
+    font-size: 150px;
+}
+.error-tail {
+    text-align: center;
+    font-size: 50px;
 }
