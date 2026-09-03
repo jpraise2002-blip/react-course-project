@@ -23,7 +23,7 @@ function App() {
       <Route index element={<HomePage cart={cart} />} /> 
       {/*Instead of path="/" we can use the prop index*/}
       <Route path='checkout' element={<CheckOutPage cart={cart} />} />
-      <Route path='orders' element={<OrdersPage />} />
+      <Route path='orders' element={<OrdersPage cart={cart} />} />
       <Route path='tracking' element={<TrackingPage />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
