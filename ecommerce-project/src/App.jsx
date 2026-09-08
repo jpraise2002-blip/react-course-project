@@ -16,7 +16,7 @@ function App() {
       const response = await axios.get('/api/cart-items?expand=product')
       setCart(response.data);
     };
-    
+
     fetchAppData();
   }, []);
 
@@ -26,7 +26,7 @@ function App() {
       {/*Instead of path="/" we can use the prop index*/}
       <Route path='checkout' element={<CheckOutPage cart={cart} />} />
       <Route path='orders' element={<OrdersPage cart={cart} />} />
-      <Route path='tracking' element={<TrackingPage cart={cart} />} />
+      <Route path='tracking/:orderId/:productId' element={<TrackingPage cart={cart} />} />
       <Route path='*' element={<NotFoundPage cart={cart} />} />
     </Routes>
   )
